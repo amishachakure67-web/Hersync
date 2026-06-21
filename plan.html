@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Diet Plan — HerSync</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/plan.css">
+  <link rel="stylesheet" href="css/tracker.css">
+  <link rel="stylesheet" href="css/journal.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body class="dashboard-body">
+
+  <!-- Fixed Top Navigation Bar -->
+  <nav class="fixed-navbar">
+    <div class="nav-container">
+      <div class="nav-logo" onclick="window.location.href='dashboard.html'">
+        <div class="logo-emblem-small">
+          <img src="assets/logo-final.jpg" alt="HerSync logo" class="logo-img-small">
+        </div>
+        <span class="header-brand-title">HerSync</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="tracker.html" class="nav-link">Period Tracker</a></li>
+        <li><a href="workout.html" class="nav-link">Workout Plans</a></li>
+        <li><a href="#" id="profile-link" class="nav-link">Profile</a></li>
+        <li><a href="index.html" class="nav-link">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="dashboard-page tracker-page-container">
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <div class="welcome-section">
+        <h1 class="welcome-title" id="plan-title">Dynamic Diet Plan</h1>
+        <p class="welcome-subtitle">A personalized 7-day nutritional schedule tailored to your health goals.</p>
+      </div>
+
+      <div class="plan-layout">
+        
+        <!-- Progress Card -->
+        <section class="glass-card progress-card-plan">
+          <h3 class="progress-title">Week Progress</h3>
+          <div class="progress-stats">
+            <span id="days-completed-text">0 / 7 Days Completed</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+          </div>
+        </section>
+
+        <!-- Accordion Days List -->
+        <section class="days-accordion-container" id="days-accordion">
+          <!-- Accordion days will be dynamically injected here by plan.js -->
+        </section>
+
+        <!-- Generate Next Week Button -->
+        <div class="plan-actions">
+          <button id="generate-next-week-btn" class="btn btn-primary btn-generate">Generate Next Week Plan</button>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="js/global-reminder.js"></script>
+  <script src="js/plan.js"></script>
+  <script src="js/journal.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

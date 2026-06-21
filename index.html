@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HerSync — Your Wellness. Your Rhythm.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="page">
+    <!-- Left Branding Panel -->
+    <aside class="brand-panel" aria-label="HerSync branding">
+      <!-- Ambient background -->
+      <div class="brand-bg" aria-hidden="true">
+        <div class="glow-circle glow-1"></div>
+        <div class="glow-circle glow-2"></div>
+        <div class="glow-circle glow-3"></div>
+        <div class="glow-circle glow-4"></div>
+        <div class="abstract-shape shape-1"></div>
+        <div class="abstract-shape shape-2"></div>
+        <div class="abstract-shape shape-3"></div>
+        <div class="floral-pattern"></div>
+        <svg class="bg-illustration" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="520" cy="120" r="70" stroke="#C084FC" stroke-width="1" opacity="0.2" stroke-dasharray="6 8"/>
+          <circle cx="520" cy="120" r="48" stroke="#E9D5FF" stroke-width="1.2" opacity="0.25"/>
+          <path d="M80 480c20-30 50-45 80-45s60 15 80 45" stroke="#C084FC" stroke-width="1.5" opacity="0.15" stroke-linecap="round"/>
+          <path d="M40 200 L80 200 L95 165 L110 235 L125 185 L140 200 L180 200" stroke="#C084FC" stroke-width="1.5" opacity="0.18" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M480 420 C500 380, 540 370, 560 400 C580 430, 560 470, 520 480 C480 490, 460 450, 480 420Z" fill="#E9D5FF" opacity="0.12"/>
+          <path d="M100 100 C115 75, 145 70, 160 95 C175 120, 155 150, 125 155 C95 160, 85 125, 100 100Z" fill="#FFE5F1" opacity="0.35"/>
+          <path d="M420 520 C435 495, 465 490, 480 515 C495 540, 475 570, 445 575 C415 580, 405 545, 420 520Z" fill="#FCE7F3" opacity="0.4"/>
+        </svg>
+      </div>
+
+      <div class="brand-content">
+        <!-- Hero logo emblem -->
+        <div class="logo-emblem">
+          <div class="logo-emblem-glow"></div>
+          <div class="logo-emblem-ring"></div>
+          <div class="logo-emblem-inner">
+            <img src="assets/logo-final.jpg" alt="HerSync logo" class="logo-emblem-img">
+          </div>
+        </div>
+
+        <h1 class="brand-title">HerSync</h1>
+        <p class="brand-tagline">Your Wellness. Your Rhythm.</p>
+        <p class="brand-description">
+          Track cycles, manage PCOS, monitor BMI, and receive personalized wellness
+          insights in one beautiful platform.
+        </p>
+
+        <!-- Floating feature cards -->
+        <div class="feature-cards">
+          <div class="feature-card card-1">
+            <span class="feature-card-icon">🌸</span>
+            <span class="feature-card-label">Cycle Tracking</span>
+          </div>
+          <div class="feature-card card-2">
+            <span class="feature-card-icon">💜</span>
+            <span class="feature-card-label">PCOS Care</span>
+          </div>
+          <div class="feature-card card-3">
+            <span class="feature-card-icon">📊</span>
+            <span class="feature-card-label">BMI Monitor</span>
+          </div>
+          <div class="feature-card card-4">
+            <span class="feature-card-icon">✨</span>
+            <span class="feature-card-label">Health Insights</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right Auth Panel -->
+    <main class="auth-panel">
+      <div class="auth-card">
+        <!-- Login Form -->
+        <div class="form-view active" id="login-view">
+          <div class="card-header">
+            <h2>Welcome back</h2>
+            <p>Sign in to continue your wellness journey</p>
+          </div>
+
+          <form id="login-form" class="auth-form" novalidate>
+            <div class="form-group">
+              <input type="email" id="login-email" class="form-input" placeholder=" " autocomplete="email" required>
+              <label for="login-email" class="form-label">Email Address</label>
+              <span class="error-msg" id="login-email-error"></span>
+            </div>
+
+            <div class="form-group">
+              <input type="password" id="login-password" class="form-input" placeholder=" " autocomplete="current-password" required minlength="6">
+              <label for="login-password" class="form-label">Password</label>
+              <button type="button" class="toggle-password" aria-label="Show password" data-target="login-password">
+                <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="eye-closed hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+              </button>
+              <span class="error-msg" id="login-password-error"></span>
+            </div>
+
+            <div class="form-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="remember-me">
+                <span class="checkmark"></span>
+                Remember Me
+              </label>
+              <a href="#" class="link-subtle">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+
+            <div class="divider">
+              <span>or</span>
+            </div>
+
+            <button type="button" class="btn btn-google">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              Continue with Google
+            </button>
+
+            <p class="form-switch">
+              Don't have an account?
+              <button type="button" class="link-btn" data-switch="signup">Sign Up</button>
+            </p>
+          </form>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="form-view" id="signup-view">
+          <div class="card-header">
+            <h2>Create your account</h2>
+            <p>Start your personalized wellness journey today</p>
+          </div>
+
+          <form id="signup-form" class="auth-form" novalidate>
+            <div class="form-group">
+              <input type="text" id="signup-name" class="form-input" placeholder=" " autocomplete="name" required minlength="2">
+              <label for="signup-name" class="form-label">Full Name</label>
+              <span class="error-msg" id="signup-name-error"></span>
+            </div>
+
+            <div class="form-group">
+              <input type="email" id="signup-email" class="form-input" placeholder=" " autocomplete="email" required>
+              <label for="signup-email" class="form-label">Email</label>
+              <span class="error-msg" id="signup-email-error"></span>
+            </div>
+
+            <div class="form-group">
+              <input type="password" id="signup-password" class="form-input" placeholder=" " autocomplete="new-password" required minlength="8">
+              <label for="signup-password" class="form-label">Password</label>
+              <button type="button" class="toggle-password" aria-label="Show password" data-target="signup-password">
+                <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="eye-closed hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+              </button>
+              <span class="error-msg" id="signup-password-error"></span>
+            </div>
+
+            <div class="form-group">
+              <input type="password" id="signup-confirm" class="form-input" placeholder=" " autocomplete="new-password" required>
+              <label for="signup-confirm" class="form-label">Confirm Password</label>
+              <button type="button" class="toggle-password" aria-label="Show password" data-target="signup-confirm">
+                <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="eye-closed hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+              </button>
+              <span class="error-msg" id="signup-confirm-error"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create Account</button>
+
+            <div class="divider">
+              <span>or</span>
+            </div>
+
+            <button type="button" class="btn btn-google">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              Continue with Google
+            </button>
+
+            <p class="form-switch">
+              Already have an account?
+              <button type="button" class="link-btn" data-switch="login">Login</button>
+            </p>
+          </form>
+        </div>
+      </div>
+
+      <!-- Mobile brand header -->
+      <div class="mobile-brand">
+        <div class="mobile-logo-emblem">
+          <img src="assets/logo-final.jpg" alt="HerSync" class="mobile-logo-img">
+        </div>
+        <span class="mobile-title">HerSync</span>
+      </div>
+    </main>
+  </div>
+
+  <!-- Success toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

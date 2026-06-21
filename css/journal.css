@@ -1,0 +1,331 @@
+/* ============================================
+   HerSync — Floating Journal Styles
+   ============================================ */
+
+/* ---- Floating Action Button (FAB) ---- */
+.journal-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(252, 231, 243, 0.95));
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(192, 132, 252, 0.4);
+  box-shadow: 0 8px 25px rgba(192, 132, 252, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  cursor: pointer;
+  z-index: 3000;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--purple-dark);
+}
+
+.journal-fab:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(192, 132, 252, 0.4), inset 0 0 15px rgba(255, 255, 255, 1);
+}
+
+.journal-fab:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* ---- Journal Modal Overlay ---- */
+.journal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 240, 245, 0.3);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 4000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.journal-overlay.active {
+  display: block;
+}
+
+/* ---- Journal Modal Box ---- */
+.journal-modal {
+  position: absolute;
+  bottom: 6rem;
+  right: 2rem;
+  width: 360px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(252, 231, 243, 0.95));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius);
+  box-shadow: 0 15px 40px rgba(192, 132, 252, 0.2);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.journal-overlay.active .journal-modal {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Mobile responsive bottom-sheet style */
+@media (max-width: 600px) {
+  .journal-fab {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+  
+  .journal-modal {
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    border-radius: var(--radius) var(--radius) 0 0;
+    max-height: 90vh;
+  }
+}
+
+/* ---- Modal Inner Layout ---- */
+.journal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(192, 132, 252, 0.15);
+}
+
+.journal-header h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.journal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ---- Write Section ---- */
+.journal-date {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--purple-dark);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mood-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mood-selector label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.mood-emojis {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mood-btn {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(192, 132, 252, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.mood-btn:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+.mood-btn.selected {
+  background: rgba(252, 231, 243, 1);
+  border-color: var(--purple);
+  box-shadow: 0 4px 10px rgba(192, 132, 252, 0.2);
+}
+
+.journal-textarea {
+  width: 100%;
+  height: 140px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(192, 132, 252, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  resize: none;
+  transition: var(--transition);
+}
+
+.journal-textarea:focus {
+  outline: none;
+  border-color: var(--purple);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.1);
+}
+
+.journal-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.btn-save-journal {
+  width: 100%;
+}
+
+/* ---- Saved Entries List ---- */
+.saved-entries-section {
+  border-top: 1px dashed rgba(192, 132, 252, 0.3);
+  padding-top: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.saved-entries-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.saved-entries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.entry-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(192, 132, 252, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.entry-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.entry-card-date {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.75rem;
+  color: var(--purple-dark);
+  font-weight: 700;
+}
+
+.entry-card-mood {
+  font-size: 1.1rem;
+}
+
+.entry-card-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.no-entries-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+  font-style: italic;
+}
+
+/* ---- Comfort Panel ---- */
+.comfort-panel {
+  display: none;
+  background: linear-gradient(135deg, rgba(252, 231, 243, 0.9), rgba(255, 255, 255, 0.9));
+  border: 1px solid var(--purple-light);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  margin-top: 1rem;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.comfort-panel.active {
+  display: block;
+}
+
+.comfort-panel h4 {
+  font-family: 'Outfit', sans-serif;
+  color: var(--purple-dark);
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.comfort-panel p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.comfort-points-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.comfort-points-list li {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.btn-close-comfort {
+  background: var(--purple-light);
+  color: var(--purple-dark);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-close-comfort:hover {
+  background: var(--purple);
+  color: #fff;
+}

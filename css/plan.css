@@ -1,0 +1,334 @@
+/* ============================================
+   HerSync — Diet Plan Styles
+   ============================================ */
+
+.plan-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ---- Progress Card ---- */
+
+.progress-card-plan {
+  padding: 2rem;
+  text-align: center;
+}
+
+.progress-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.progress-stats {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 14px;
+  background: rgba(192, 132, 252, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--purple) 0%, var(--purple-dark) 100%);
+  border-radius: 10px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(168, 85, 247, 0.25);
+}
+
+/* ---- Accordion Days ---- */
+
+.days-accordion-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.day-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.day-card.completed {
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.day-card:hover {
+  box-shadow: var(--shadow-card);
+}
+
+.day-header {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+}
+
+.day-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.day-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.day-status-badge {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  display: none;
+}
+
+.day-card.completed .day-status-badge {
+  display: inline-block;
+}
+
+.day-arrow-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.day-card.open .day-arrow-icon {
+  transform: rotate(180deg);
+}
+
+/* Day Expandable Content */
+
+.day-content-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.day-card.open .day-content-wrapper {
+  max-height: 1500px; /* Large enough to fit dynamic content */
+}
+
+.day-content {
+  padding: 0 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-top: 1px solid rgba(192, 132, 252, 0.1);
+  padding-top: 2rem;
+}
+
+/* ---- Meals Layout ---- */
+
+.meal-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.meal-type-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.meal-options-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 600px) {
+  .meal-options-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Custom Radio Card */
+
+.meal-option-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.meal-radio-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.meal-card-content {
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid var(--lavender);
+  border-radius: var(--radius-sm);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.meal-radio-dot {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--text-muted);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.meal-radio-dot::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--white);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform var(--transition);
+}
+
+.meal-option-card:hover .meal-card-content {
+  border-color: var(--purple-light);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.meal-radio-input:checked + .meal-card-content {
+  background: rgba(252, 231, 243, 0.7);
+  border-color: var(--purple);
+  color: var(--text-primary);
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(192, 132, 252, 0.1);
+}
+
+.meal-radio-input:checked + .meal-card-content .meal-radio-dot {
+  border-color: var(--purple);
+  background: var(--purple);
+}
+
+.meal-radio-input:checked + .meal-card-content .meal-radio-dot::after {
+  transform: scale(1);
+}
+
+/* ---- Completion Checkbox Section ---- */
+
+.day-completion-section {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0 0.5rem;
+  border-top: 1px solid rgba(192, 132, 252, 0.1);
+}
+
+.completion-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.completion-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.completion-box {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--purple-light);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  background: var(--white);
+  flex-shrink: 0;
+}
+
+.completion-box svg {
+  width: 14px;
+  height: 10px;
+  color: var(--white);
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  transition: stroke-dashoffset 0.4s ease;
+}
+
+.completion-checkbox-input:checked + .completion-box {
+  background: #10B981;
+  border-color: #10B981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+.completion-checkbox-input:checked + .completion-box svg {
+  stroke-dashoffset: 0;
+}
+
+.completion-text {
+  transition: var(--transition);
+}
+
+.completion-checkbox-input:checked ~ .completion-text {
+  color: #10B981;
+}
+
+/* ---- Generate Button ---- */
+
+.plan-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.btn-generate {
+  max-width: 320px;
+  padding: 1.125rem 2rem;
+  font-size: 1.1rem;
+}

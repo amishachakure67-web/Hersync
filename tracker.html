@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Period Tracker — HerSync</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/tracker.css">
+  <link rel="stylesheet" href="css/journal.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body class="dashboard-body">
+
+  <!-- Fixed Top Navigation Bar -->
+  <nav class="fixed-navbar">
+    <div class="nav-container">
+      <div class="nav-logo" onclick="window.location.href='dashboard.html'">
+        <div class="logo-emblem-small">
+          <img src="assets/logo-final.jpg" alt="HerSync logo" class="logo-img-small">
+        </div>
+        <span class="header-brand-title">HerSync</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="tracker.html" class="nav-link active">Period Tracker</a></li>
+        <li><a href="workout.html" class="nav-link">Workout Plans</a></li>
+        <li><a href="#" id="profile-link" class="nav-link">Profile</a></li>
+        <li><a href="index.html" class="nav-link">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="dashboard-page tracker-page-container">
+    
+    <!-- Page Header -->
+    <main class="dashboard-main">
+      <div class="welcome-section" style="margin-top: 1rem;">
+        <h1 class="welcome-title">🌸 Period Tracker</h1>
+        <p class="welcome-subtitle">Track your cycle and stay informed about your next expected period.</p>
+      </div>
+
+      <div class="tracker-grid">
+        
+        <!-- Left Side: Inputs and Calculations -->
+        <div class="tracker-left">
+          
+          <!-- Period Inputs Card -->
+          <section class="glass-card form-card">
+            <div class="card-header-dash">
+              <h2>Enter Period Details</h2>
+              <p>Provide your cycle info to project your next expected date.</p>
+            </div>
+            
+            <form id="period-form" class="dash-form" novalidate>
+              <div class="form-group-dash">
+                <label for="last-period-date" class="dash-label">Last Period Start Date</label>
+                <input type="date" id="last-period-date" class="dash-input" required>
+                <span class="error-msg" id="last-period-date-error"></span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group-dash">
+                  <label for="cycle-length" class="dash-label">Average Cycle Length (Days)</label>
+                  <input type="number" id="cycle-length" class="dash-input" value="28" min="20" max="45" required>
+                  <span class="error-msg" id="cycle-length-error"></span>
+                </div>
+
+                <div class="form-group-dash">
+                  <label for="period-duration" class="dash-label">Period Duration (Days)</label>
+                  <input type="number" id="period-duration" class="dash-input" value="5" min="2" max="14" required>
+                  <span class="error-msg" id="period-duration-error"></span>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-calculate">Calculate Period Cycle</button>
+            </form>
+          </section>
+
+          <!-- Result Section Card -->
+          <section class="glass-card result-card hidden" id="period-result-card">
+            <div class="result-header">
+              <h3>Expected Cycle Projection</h3>
+            </div>
+            
+            <div class="period-results-details">
+              <div class="result-item">
+                <span class="result-label-text">Last Period Start:</span>
+                <span class="result-value-text" id="res-last-date">--</span>
+              </div>
+              <div class="result-item highlight">
+                <span class="result-label-text">Next Expected Period:</span>
+                <span class="result-value-text" id="res-next-date">--</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label-text">Days Remaining:</span>
+                <span class="result-value-text" id="res-days-remaining">--</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label-text">Cycle Length:</span>
+                <span class="result-value-text" id="res-cycle-length">--</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label-text">Period Duration:</span>
+                <span class="result-value-text" id="res-duration">--</span>
+              </div>
+            </div>
+
+            <!-- Period Status Sub-Card -->
+            <div class="status-banner" id="period-status-banner">
+              <span id="status-icon">✓</span>
+              <span id="status-text">Cycle Tracking Active</span>
+            </div>
+
+            <!-- Delayed Feature Trigger & Expandable Tips -->
+            <div class="delayed-action-wrapper hidden" id="delayed-action-wrapper">
+              <button type="button" class="btn-delayed-toggle" id="delayed-tips-btn">
+                <span>Period Delayed?</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </button>
+              
+              <div class="delayed-tips-panel" id="delayed-tips-panel">
+                <div class="tips-panel-inner">
+                  <h4>🌸 Stress Management Tips</h4>
+                  <ul class="tips-list">
+                    <li><span>✓</span> Sleep 7–9 hours daily</li>
+                    <li><span>✓</span> Stay hydrated</li>
+                    <li><span>✓</span> Practice meditation for 10–15 minutes</li>
+                    <li><span>✓</span> Go for a short walk or light exercise</li>
+                    <li><span>✓</span> Follow a balanced healthy diet</li>
+                    <li><span>✓</span> Reduce stress whenever possible</li>
+                    <li><span>✓</span> Maintain a regular daily routine</li>
+                  </ul>
+                  <div class="self-care-reminder">
+                    <strong>Self-Care Reminder:</strong><br>
+                    Taking care of your physical and mental well-being can support healthy habits and overall wellness.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+        </div>
+
+        <!-- Right Side: Symptoms Tracker -->
+        <div class="tracker-right-col">
+          <section class="glass-card symptoms-card">
+            <div class="card-header-dash">
+              <h2>Symptom Tracker</h2>
+              <p>Log any symptoms you are experiencing today to keep a personal health record.</p>
+            </div>
+
+            <form id="symptoms-form" class="dash-form">
+              <div class="symptoms-grid">
+                
+                <label class="symptom-checkbox-card">
+                  <input type="checkbox" name="symptoms" value="Acne" class="symptom-checkbox-input">
+                  <span class="symptom-card-content">
+                    <span class="checkbox-box"></span>
+                    <span class="symptom-name">Acne</span>
+                  </span>
+                </label>
+
+                <label class="symptom-checkbox-card">
+                  <input type="checkbox" name="symptoms" value="Hair Fall" class="symptom-checkbox-input">
+                  <span class="symptom-card-content">
+                    <span class="checkbox-box"></span>
+                    <span class="symptom-name">Hair Fall</span>
+                  </span>
+                </label>
+
+                <label class="symptom-checkbox-card">
+                  <input type="checkbox" name="symptoms" value="Bloating" class="symptom-checkbox-input">
+                  <span class="symptom-card-content">
+                    <span class="checkbox-box"></span>
+                    <span class="symptom-name">Bloating</span>
+                  </span>
+                </label>
+
+                <label class="symptom-checkbox-card">
+                  <input type="checkbox" name="symptoms" value="Mood Swings" class="symptom-checkbox-input">
+                  <span class="symptom-card-content">
+                    <span class="checkbox-box"></span>
+                    <span class="symptom-name">Mood Swings</span>
+                  </span>
+                </label>
+
+                <label class="symptom-checkbox-card">
+                  <input type="checkbox" name="symptoms" value="Fatigue" class="symptom-checkbox-input">
+                  <span class="symptom-card-content">
+                    <span class="checkbox-box"></span>
+                    <span class="symptom-name">Fatigue</span>
+                  </span>
+                </label>
+
+                <label class="symptom-checkbox-card">
+                  <input type="checkbox" name="symptoms" value="Weight Gain" class="symptom-checkbox-input">
+                  <span class="symptom-card-content">
+                    <span class="checkbox-box"></span>
+                    <span class="symptom-name">Weight Gain</span>
+                  </span>
+                </label>
+
+                <label class="symptom-checkbox-card">
+                  <input type="checkbox" name="symptoms" value="Irregular Periods" class="symptom-checkbox-input">
+                  <span class="symptom-card-content">
+                    <span class="checkbox-box"></span>
+                    <span class="symptom-name">Irregular Periods</span>
+                  </span>
+                </label>
+
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="margin-top: 1.5rem;">Save Symptoms</button>
+            </form>
+
+            <div class="symptoms-status-msg" id="symptoms-status-msg">
+              ✓ Symptoms Saved Successfully
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/global-reminder.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/journal.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

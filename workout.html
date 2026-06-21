@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Plans — HerSync</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/plan.css">
+  <link rel="stylesheet" href="css/tracker.css">
+  <link rel="stylesheet" href="css/workout.css">
+  <link rel="stylesheet" href="css/journal.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body class="dashboard-body">
+
+  <!-- Fixed Top Navigation Bar -->
+  <nav class="fixed-navbar">
+    <div class="nav-container">
+      <div class="nav-logo" onclick="window.location.href='dashboard.html'">
+        <div class="logo-emblem-small">
+          <img src="assets/logo-final.jpg" alt="HerSync logo" class="logo-img-small">
+        </div>
+        <span class="header-brand-title">HerSync</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="tracker.html" class="nav-link">Period Tracker</a></li>
+        <li><a href="workout.html" class="nav-link active">Workout Plans</a></li>
+        <li><a href="#" id="profile-link" class="nav-link">Profile</a></li>
+        <li><a href="index.html" class="nav-link">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="dashboard-page tracker-page-container">
+    
+    <!-- Page Header -->
+    <main class="dashboard-main">
+      <div class="welcome-section" style="margin-top: 1rem;">
+        <h1 class="welcome-title">🏋️ Workout Plans</h1>
+        <p class="welcome-subtitle">Stay active and achieve your health goals.</p>
+      </div>
+
+      <!-- Goal Selection -->
+      <section class="goal-selection-container" id="goal-selection-container">
+        <h2 class="section-heading">Select Your Fitness Goal</h2>
+        <div class="goal-cards-wrapper">
+          
+          <div class="goal-card" data-goal="loss">
+            <div class="goal-icon">🔥</div>
+            <h3 class="goal-card-title">Weight Loss</h3>
+            <p class="goal-card-desc">Burn calories and build lean muscle with active routines.</p>
+          </div>
+
+          <div class="goal-card" data-goal="gain">
+            <div class="goal-icon">💪</div>
+            <h3 class="goal-card-title">Weight Gain</h3>
+            <p class="goal-card-desc">Build strength and muscle mass with targeted exercises.</p>
+          </div>
+
+          <div class="goal-card" data-goal="maintain">
+            <div class="goal-icon">🧘‍♀️</div>
+            <h3 class="goal-card-title">Maintain Weight</h3>
+            <p class="goal-card-desc">Stay fit, flexible, and balanced with sustainable habits.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Workout Plan Layout (Hidden until goal is selected) -->
+      <div class="workout-layout hidden" id="workout-layout">
+        
+        <!-- Left: Accordion -->
+        <div class="workout-left">
+          <div class="plan-header-controls">
+            <h2 class="section-heading" id="selected-goal-title">7-Day Workout Plan</h2>
+            <button class="btn-change-goal" id="btn-change-goal">Change Goal</button>
+          </div>
+          
+          <section class="days-accordion-container" id="workout-accordion">
+            <!-- Dynamically injected by JS -->
+          </section>
+        </div>
+
+        <!-- Right: Progress & PCOS Section -->
+        <div class="workout-right">
+          
+          <!-- Progress Card -->
+          <section class="glass-card progress-card-plan">
+            <h3 class="progress-title">Week Progress</h3>
+            <div class="progress-stats">
+              <span id="days-completed-text">0 / 7 Days Completed</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" id="progress-bar-fill"></div>
+            </div>
+          </section>
+
+          <!-- PCOS Friendly Section -->
+          <section class="glass-card pcos-card">
+            <h3 class="pcos-title">🌸 Recommended for PCOS/PCOD</h3>
+            <ul class="pcos-list">
+              <li><span class="check-icon">✓</span> Walking</li>
+              <li><span class="check-icon">✓</span> Yoga</li>
+              <li><span class="check-icon">✓</span> Cycling</li>
+              <li><span class="check-icon">✓</span> Strength Training</li>
+              <li><span class="check-icon">✓</span> Stretching</li>
+            </ul>
+            <div class="pcos-reminder">
+              Consistent, moderate exercise is highly effective in managing PCOS symptoms and hormonal balance.
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Water Settings Modal -->
+  <div class="water-modal-overlay" id="water-settings-modal">
+    <div class="water-modal-content glass-card">
+      <div class="modal-header">
+        <h3>💧 Reminder Settings</h3>
+        <button class="btn-close-modal" id="close-water-modal">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group-dash">
+          <label class="dash-label">Reminder Interval</label>
+          <select id="water-interval-select" class="dash-input">
+            <option value="30">Every 30 Minutes</option>
+            <option value="60" selected>Every 60 Minutes</option>
+            <option value="90">Every 90 Minutes</option>
+          </select>
+        </div>
+        <div class="form-group-dash toggle-group">
+          <label class="dash-label">Soft Chime Sound</label>
+          <label class="switch">
+            <input type="checkbox" id="water-sound-toggle" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="save-water-settings" style="width:100%;">Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/global-reminder.js"></script>
+  <script src="js/workout.js"></script>
+  <script src="js/journal.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

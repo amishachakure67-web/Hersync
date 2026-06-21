@@ -1,0 +1,434 @@
+/* ============================================
+   HerSync — Dashboard Styles
+   ============================================ */
+
+.dashboard-body {
+  background: linear-gradient(135deg, var(--rose) 0%, #FDF2F8 50%, var(--lavender) 100%);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Header ---- */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(192, 132, 252, 0.2);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo-emblem-small {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(155deg, #FFF5FA, var(--lavender));
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 10px rgba(192, 132, 252, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img-small {
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+  border-radius: 50%;
+  mix-blend-mode: darken;
+}
+
+.header-brand-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #7E22CE, #C084FC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-logout {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(192, 132, 252, 0.3);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+  backdrop-filter: blur(8px);
+}
+
+.btn-logout:hover {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(192, 132, 252, 0.15);
+  transform: translateY(-1px);
+}
+
+/* ---- Welcome Section ---- */
+
+.welcome-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeUp 0.6s ease-out;
+}
+
+.welcome-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.welcome-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+/* ---- Dashboard Layout ---- */
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .dashboard-content {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+/* ---- Glassmorphism Cards ---- */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.6s ease-out 0.2s both;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blush), var(--purple), var(--lavender));
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.card-header-dash {
+  margin-bottom: 2rem;
+}
+
+.card-header-dash h2 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.card-header-dash p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ---- Form Layout ---- */
+
+.dash-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-group-dash {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: relative;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.dash-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-left: 0.2rem;
+}
+
+.dash-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid var(--lavender);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: var(--transition);
+}
+
+.dash-input:hover {
+  border-color: var(--purple-light);
+}
+
+.dash-input:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 4px rgba(192, 132, 252, 0.15);
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.dash-select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 2.5rem;
+}
+
+.select-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.btn-calculate {
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- BMI Result Card ---- */
+
+.result-card.hidden {
+  display: none;
+}
+
+.result-header h3 {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.bmi-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius);
+  border: 1px dashed var(--purple-light);
+}
+
+.bmi-score {
+  font-size: 4rem;
+  font-weight: 800;
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.bmi-badge {
+  padding: 0.5rem 1.25rem;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  transition: var(--transition);
+}
+
+/* Badge Colors */
+.badge-blue {
+  background: #3B82F6;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.badge-green {
+  background: #10B981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.badge-orange {
+  background: #F59E0B;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.badge-red {
+  background: #EF4444;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.bmi-description {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Visual Scale */
+.bmi-scale {
+  display: flex;
+  height: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.scale-segment {
+  height: 100%;
+  position: relative;
+}
+
+.segment-underweight { width: 25%; background: #93C5FD; }
+.segment-normal { width: 25%; background: #6EE7B7; }
+.segment-overweight { width: 25%; background: #FCD34D; }
+.segment-obese { width: 25%; background: #FCA5A5; }
+
+.segment-label {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.scale-marker {
+  position: absolute;
+  top: -5px;
+  width: 4px;
+  height: 20px;
+  background: var(--text-primary);
+  border-radius: 4px;
+  left: 0%;
+  transform: translateX(-50%);
+  transition: left 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 0 2px white;
+  z-index: 10;
+  display: none;
+}
+
+.scale-marker.active {
+  display: block;
+}
+
+/* ---- Recommendation Section ---- */
+
+.bmi-recommendation {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px dashed rgba(192, 132, 252, 0.4);
+  animation: fadeUp 0.6s ease-out 0.4s both;
+}
+
+.bmi-recommendation.hidden {
+  display: none;
+}
+
+.recommendation-title {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.goal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.goal-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.goal-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.btn-goal {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1.5px solid var(--purple-light);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--purple-dark);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-goal:hover {
+  background: var(--purple);
+  color: var(--white);
+  border-color: var(--purple);
+  box-shadow: 0 4px 16px rgba(192, 132, 252, 0.25);
+  transform: translateY(-2px);
+}

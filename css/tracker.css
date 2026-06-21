@@ -1,0 +1,357 @@
+/* ============================================
+   HerSync — Period Tracker Styles
+   ============================================ */
+
+/* ---- Fixed Navigation Bar ---- */
+
+.fixed-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(192, 132, 252, 0.15);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.nav-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 100px;
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--purple-dark);
+  background: rgba(192, 132, 252, 0.08);
+}
+
+.nav-link.active {
+  color: var(--purple-dark);
+  background: rgba(192, 132, 252, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Adjust page container top padding due to fixed navbar */
+.tracker-page-container {
+  padding-top: 96px !important;
+}
+
+/* ---- Tracker Layout Grid ---- */
+
+.tracker-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .tracker-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.tracker-left,
+.tracker-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ---- Results Details ---- */
+
+.period-results-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(192, 132, 252, 0.08);
+}
+
+.result-item.highlight {
+  background: rgba(252, 231, 243, 0.5);
+  border-color: rgba(192, 132, 252, 0.25);
+}
+
+.result-label-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.result-value-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ---- Status Banner ---- */
+
+.status-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: var(--transition);
+  justify-content: center;
+}
+
+.status-banner.active {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  border: 1.5px solid rgba(16, 185, 129, 0.25);
+}
+
+.status-banner.delayed {
+  background: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+  border: 1.5px solid rgba(239, 68, 68, 0.25);
+}
+
+/* ---- Delayed Feature Tips ---- */
+
+.delayed-action-wrapper {
+  margin-top: 1.5rem;
+  border-top: 1px dashed rgba(192, 132, 252, 0.3);
+  padding-top: 1.5rem;
+}
+
+.delayed-action-wrapper.hidden {
+  display: none;
+}
+
+.btn-delayed-toggle {
+  width: 100%;
+  background: rgba(239, 68, 68, 0.05);
+  border: 1.5px dashed #EF4444;
+  color: #EF4444;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.btn-delayed-toggle:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.btn-delayed-toggle .arrow-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition);
+}
+
+.btn-delayed-toggle.open .arrow-icon {
+  transform: rotate(180deg);
+}
+
+.delayed-tips-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.delayed-tips-panel.open {
+  max-height: 500px;
+}
+
+.tips-panel-inner {
+  padding-top: 1.5rem;
+}
+
+.tips-panel-inner h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin-bottom: 0.85rem;
+}
+
+.tips-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.tips-list li {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.925rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.tips-list li span {
+  color: #10B981;
+  font-weight: 700;
+}
+
+.self-care-reminder {
+  background: rgba(192, 132, 252, 0.08);
+  border-left: 4px solid var(--purple);
+  padding: 1rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* ---- Symptom Checklist Grid ---- */
+
+.symptoms-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+}
+
+@media (min-width: 480px) {
+  .symptoms-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.symptom-checkbox-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.symptom-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.symptom-card-content {
+  padding: 0.9rem 1.2rem;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1.5px solid var(--lavender);
+  border-radius: var(--radius-sm);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.checkbox-box {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--text-muted);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.checkbox-box::after {
+  content: '';
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0) translateY(-1px);
+  transition: transform var(--transition);
+}
+
+.symptom-checkbox-card:hover .symptom-card-content {
+  border-color: var(--purple-light);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.symptom-checkbox-input:checked + .symptom-card-content {
+  background: rgba(252, 231, 243, 0.7);
+  border-color: var(--purple);
+  color: var(--text-primary);
+}
+
+.symptom-checkbox-input:checked + .symptom-card-content .checkbox-box {
+  background: var(--purple);
+  border-color: var(--purple);
+}
+
+.symptom-checkbox-input:checked + .symptom-card-content .checkbox-box::after {
+  transform: rotate(45deg) scale(1) translateY(-1px);
+}
+
+.symptoms-status-msg {
+  display: none;
+  margin-top: 1.25rem;
+  padding: 0.85rem;
+  border-radius: var(--radius-sm);
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  border: 1.5px solid rgba(16, 185, 129, 0.2);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  animation: fadeUp 0.4s ease-out;
+}
+
+.symptoms-status-msg.visible {
+  display: block;
+}

@@ -1,0 +1,284 @@
+/* ============================================
+   HerSync — Profile Drawer Styles
+   ============================================ */
+
+/* ---- Overlay & Backdrop ---- */
+.profile-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 5000;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.profile-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ---- Sliding Drawer ---- */
+.profile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(252, 231, 243, 0.95));
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: -10px 0 40px rgba(192, 132, 252, 0.15);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  z-index: 5001;
+  border-left: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.profile-overlay.active .profile-drawer {
+  transform: translateX(0);
+}
+
+/* ---- Drawer Header ---- */
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(192, 132, 252, 0.15);
+  position: sticky;
+  top: 0;
+  background: inherit;
+  z-index: 10;
+}
+
+.profile-header h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.btn-close-profile {
+  background: transparent;
+  border: none;
+  font-size: 1.75rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  line-height: 1;
+  padding: 0;
+}
+
+.btn-close-profile:hover {
+  color: var(--text-primary);
+}
+
+/* ---- Drawer Body ---- */
+.profile-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ---- Identity Card ---- */
+.profile-identity-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(192, 132, 252, 0.3);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple-light), var(--pink));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 1rem;
+  border: 3px solid white;
+  box-shadow: 0 4px 15px rgba(192, 132, 252, 0.3);
+}
+
+.profile-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.profile-goal-tag {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--purple-dark);
+  background: rgba(192, 132, 252, 0.15);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  margin-bottom: 0.5rem;
+}
+
+.profile-pcos-badge {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #d946ef; /* Magenta-pink for PCOS */
+  background: rgba(217, 70, 239, 0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  display: none; /* hidden by default */
+}
+.profile-pcos-badge.active {
+  display: inline-flex;
+}
+
+/* ---- Section Styles ---- */
+.profile-section {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(192, 132, 252, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+}
+
+.profile-section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ---- Settings Hub Toggles ---- */
+.settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.setting-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.setting-icon {
+  font-size: 1.2rem;
+}
+
+/* ---- Insights List ---- */
+.insights-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.insights-list li {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.4;
+}
+
+.insights-list li::before {
+  content: '✨';
+  font-size: 0.85rem;
+}
+
+/* ---- Supportive Message Card ---- */
+.support-message-card {
+  background: linear-gradient(135deg, rgba(252, 231, 243, 0.7), rgba(255, 255, 255, 0.8));
+  border-left: 3px solid var(--pink);
+  padding: 1.25rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.support-message-card p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  color: var(--purple-dark);
+  margin: 0;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* ---- Journal Preview ---- */
+.journal-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.journal-entry-snippet {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px dashed rgba(192, 132, 252, 0.3);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.btn-open-journal {
+  background: var(--purple-light);
+  color: var(--purple-dark);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-open-journal:hover {
+  background: var(--purple);
+  color: white;
+}
