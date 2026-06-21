@@ -641,18 +641,6 @@ body {
   opacity: 0.8;
 }
 
-.btn-google {
-  background: var(--white);
-  color: var(--text-primary);
-  border: 1.5px solid var(--lavender);
-}
-
-.btn-google:hover {
-  background: var(--rose);
-  border-color: var(--purple-light);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-soft);
-}
 
 /* Divider */
 

@@ -252,12 +252,5 @@
     });
   });
 
-  /* ---- Google Sign-in (placeholder) ---- */
-
-  document.querySelectorAll('.btn-google').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      showToast('Google sign-in coming soon');
-    });
-  });
 
 })();
