@@ -245,10 +245,11 @@
       var users = JSON.parse(localStorage.getItem('hersync_registered_users') || '{}');
       users[email.toLowerCase()] = name;
       localStorage.setItem('hersync_registered_users', JSON.stringify(users));
-      localStorage.setItem('hersync_username', name);
 
       signupForm.reset();
-      window.location.href = 'dashboard.html';
+      document.getElementById('login-email').value = email;
+      showToast('Registration successful! Please sign in.');
+      switchView('login');
     });
   });
 
